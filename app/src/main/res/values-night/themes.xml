@@ -1,7 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AstraFItV1" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources>
+    <!-- Usamos el mismo estilo para que siempre se vea negro/naranja -->
+    <style name="Theme.AstraFItV1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Fondo de la app negro -->
+        <item name="android:windowBackground">@color/astra_black</item>
+        <!-- Barra de estado negra -->
+        <item name="android:statusBarColor">@color/astra_black</item>
+        <!-- Color de acento naranja -->
+        <item name="colorPrimary">@color/astra_orange</item>
+        <!-- Forzamos que los iconos de la barra de estado sean claros sobre el fondo negro -->
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

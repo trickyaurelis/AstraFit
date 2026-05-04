@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_home_orange"
+            android:title="INICIO" />
+        <item
+            android:id="@+id/nav_actividades"
+            android:icon="@drawable/ic_run_orange"
+            android:title="ACTIVIDADES" />
+        <item
+            android:id="@+id/nav_estadisticas"
+            android:icon="@drawable/ic_stats_orange"
+            android:title="ESTADÍSTICAS" />
+        <item
+            android:id="@+id/nav_progreso"
+            android:icon="@drawable/ic_target_orange"
+            android:title="PROGRESO" />
+        <item
+            android:id="@+id/nav_nutricion"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="NUTRICIÓN" />
+        <item
+            android:id="@+id/nav_descanso"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="DESCANSO" />
+        <item
+            android:id="@+id/nav_objetivos"
+            android:icon="@android:drawable/btn_star"
+            android:title="OBJETIVOS" />
+    </group>
+
+    <item android:title="Opciones">
+        <menu>
+            <item
+                android:id="@+id/nav_configuracion"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="CONFIGURACIÓN" />
+        </menu>
+    </item>
+</menu>
