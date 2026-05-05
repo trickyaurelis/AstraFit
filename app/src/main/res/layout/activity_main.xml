@@ -31,7 +31,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@android:drawable/ic_menu_sort_by_size"
-                    app:tint="@color/astra_orange" />
+                    app:tint="@color/astra_orange"
+                    android:contentDescription="Abrir menú" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -42,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Astra "
-                        android:textColor="#00CCFF"
+                        android:textColor="@color/astra_blue"
                         android:textSize="28sp"
                         android:textStyle="bold" />
                     <TextView
@@ -102,7 +103,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@android:drawable/ic_menu_mylocation"
-                            app:tint="@color/astra_orange" />
+                            app:tint="@color/astra_orange"
+                            android:contentDescription="Icono pulso" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -117,6 +119,7 @@
                             android:textSize="10sp"
                             android:alpha="0.6" />
                         <TextView
+                            android:id="@+id/max_hr_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="162 lpm"
@@ -167,7 +170,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@android:drawable/ic_menu_compass"
-                            app:tint="@color/astra_orange" />
+                            app:tint="@color/astra_orange"
+                            android:contentDescription="Icono calorías" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -182,6 +186,7 @@
                             android:textSize="10sp"
                             android:alpha="0.6" />
                         <TextView
+                            android:id="@+id/total_cal_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1874 kcal"
@@ -232,7 +237,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@android:drawable/ic_menu_recent_history"
-                            app:tint="@color/astra_orange" />
+                            app:tint="@color/astra_orange"
+                            android:contentDescription="Icono tiempo" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -247,6 +253,7 @@
                             android:textSize="10sp"
                             android:alpha="0.6" />
                         <TextView
+                            android:id="@+id/total_week_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="4d 32min"
@@ -297,7 +304,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@android:drawable/ic_menu_directions"
-                            app:tint="@color/astra_orange" />
+                            app:tint="@color/astra_orange"
+                            android:contentDescription="Icono distancia" />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -312,6 +320,7 @@
                             android:textSize="10sp"
                             android:alpha="0.6" />
                         <TextView
+                            android:id="@+id/total_week_dist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="38.2 km"
@@ -346,7 +355,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@android:drawable/ic_menu_mylocation"
-                            app:tint="@color/astra_orange" />
+                            app:tint="@color/astra_orange"
+                            android:contentDescription="Icono tarjeta" />
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -361,6 +371,7 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                             <TextView
+                                android:id="@+id/avg_hr_chart"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="PROMEDIO 78 LPM"
@@ -389,7 +400,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#11FFFFFF" />
+                            android:background="@color/chart_bg_alpha" />
 
                         <!-- Marker placeholder -->
                         <LinearLayout
@@ -429,25 +440,29 @@
                     android:layout_height="32dp"
                     android:layout_weight="1"
                     android:src="@android:drawable/ic_menu_save"
-                    app:tint="#FFCC00" />
+                    app:tint="@color/astra_yellow"
+                    android:contentDescription="Acción 1" />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="32dp"
                     android:layout_weight="1"
                     android:src="@android:drawable/ic_lock_silent_mode"
-                    app:tint="#FF3366" />
+                    app:tint="@color/astra_pink"
+                    android:contentDescription="Acción 2" />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="32dp"
                     android:layout_weight="1"
                     android:src="@android:drawable/ic_media_play"
-                    app:tint="#FF3300" />
+                    app:tint="@color/astra_red"
+                    android:contentDescription="Acción 3" />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="32dp"
                     android:layout_weight="1"
                     android:src="@android:drawable/ic_menu_myplaces"
-                    app:tint="#FF9933" />
+                    app:tint="@color/astra_accent_orange"
+                    android:contentDescription="Acción 4" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
