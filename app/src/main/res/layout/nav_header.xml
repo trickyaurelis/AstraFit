@@ -15,12 +15,22 @@
         android:layout_marginBottom="8dp"/>
 
     <TextView
+        android:id="@+id/header_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="FITNESS\nDASHBOARD"
         android:textColor="@color/astra_orange"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/header_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="usuario@correo.com"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:alpha="0.7" />
 
     <View
         android:layout_width="match_parent"

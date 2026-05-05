@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,28 +39,33 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = etUsername.getText().toString();
-                String pass = etPassword.getText().toString();
+                String email = etUsername.getText().toString().trim();
+                String pass = etPassword.getText().toString().trim();
 
-                // 1. Verificar contra SharedPreferences (Usuarios registrados)
-                SharedPreferences userPrefs = getSharedPreferences("AstraFitUsers", MODE_PRIVATE);
-                String savedPass = userPrefs.getString(user, null);
-
-                // 2. Permitir también el admin/1234 por defecto
-                if ((user.equals("admin") && pass.equals("1234")) || (savedPass != null && savedPass.equals(pass))) {
-                    // Guardar sesión de forma ligera y local
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("isLoggedIn", true);
-                    editor.putString("username", user);
-                    editor.apply();
-
-                    Toast.makeText(LoginActivity.this, "¡Bienvenido a Astra Fit!", Toast.LENGTH_SHORT).show();
-                    
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                if (email.isEmpty() || pass.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Por favor, ingresa correo y contraseña", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                // LOGIN CON FIREBASE
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Guardar sesión de forma ligera y local
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.putString("username", email);
+                            editor.apply();
+
+                            Toast.makeText(LoginActivity.this, "¡Bienvenido a Astra Fit!", Toast.LENGTH_SHORT).show();
+                            
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
             }
         });
 

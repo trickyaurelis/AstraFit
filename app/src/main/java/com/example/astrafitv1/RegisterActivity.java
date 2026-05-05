@@ -8,10 +8,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextInputEditText etUsername, etEmail, etPassword;
+    private TextInputEditText etEmail, etPassword;
     private Button btnRegister;
     private TextView tvBackToLogin;
 
@@ -20,7 +21,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etUsername = findViewById(R.id.et_reg_username);
         etEmail = findViewById(R.id.et_reg_email);
         etPassword = findViewById(R.id.et_reg_password);
         btnRegister = findViewById(R.id.btn_register);
@@ -42,24 +42,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String user = etUsername.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String pass = etPassword.getText().toString().trim();
 
-        if (user.isEmpty() || email.isEmpty() || pass.isEmpty()) {
-            Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etEmail.setError("Correo electrónico no válido");
+            return;
+        }
+        if (pass.length() < 6) {
+            etPassword.setError("La contraseña debe tener al menos 6 caracteres");
             return;
         }
 
-        // Guardar el nuevo usuario en SharedPreferences
-        SharedPreferences prefs = getSharedPreferences("AstraFitUsers", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        
-        // Guardamos la contraseña asociada al nombre de usuario
-        editor.putString(user, pass);
-        editor.apply();
-
-        Toast.makeText(this, "Registro exitoso. ¡Ya puedes iniciar sesión!", Toast.LENGTH_LONG).show();
-        finish(); // Volver al login
+        // REGISTRO EN FIREBASE
+        FirebaseAuth.getInstance()
+            .createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(this, "¡Registro exitoso en la nube!", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
     }
 }

@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:hint="Usuario"
+        android:hint="Correo Electrónico"
         android:textColorHint="@color/white"
         app:hintTextColor="@color/astra_orange"
         app:boxStrokeColor="@color/astra_orange"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "969192400266",
+    "project_id": "astra-fit",
+    "storage_bucket": "astra-fit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969192400266:android:a1cb7d8bcedc54a26d1473",
+        "android_client_info": {
+          "package_name": "com.example.astrafitv1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3mQEZV_atV-_QHJ1OP44ufrxv1swVFhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

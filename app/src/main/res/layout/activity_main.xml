@@ -55,6 +55,26 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <!-- Welcome Message -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido de nuevo,"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:alpha="0.7"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tv_user_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Usuario Astra Fit"
+                android:textColor="@color/astra_orange"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
+
             <!-- Stats Grid -->
             <GridLayout
                 android:layout_width="match_parent"
@@ -209,37 +229,7 @@
                         android:text="Tiempo activo hoy"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp">
-                        <TextView
-                            android:id="@+id/time_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="57"
-                            android:textColor="@color/astra_orange"
-                            android:textSize="32sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/time_value"
-                            android:layout_alignBottom="@id/time_value"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginBottom="6dp"
-                            android:text="min"
-                            android:textColor="@color/astra_orange"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@android:drawable/ic_menu_recent_history"
-                            app:tint="@color/astra_orange"
-                            android:contentDescription="Icono tiempo" />
-                    </RelativeLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -329,6 +319,43 @@
                             android:alpha="0.8" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:id="@+id/time_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="57"
+                        android:textColor="@color/astra_orange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/time_value"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_toEndOf="@id/time_value"
+                        android:text="min"
+                        android:textColor="@color/astra_orange"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Icono tiempo"
+                        android:src="@android:drawable/ic_menu_recent_history"
+                        app:tint="@color/astra_orange" />
+                </RelativeLayout>
             </GridLayout>
 
             <!-- Heart Rate Chart Card -->
@@ -397,34 +424,58 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="12dp">
 
-                        <View
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/heartRateChart"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/chart_bg_alpha" />
+                            android:layout_height="match_parent" />
 
-                        <!-- Marker placeholder -->
-                        <LinearLayout
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Health Tip Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/astra_dark_gray"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_dialog_info"
+                        app:tint="@color/astra_yellow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginTop="-20dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/card_border"
-                                android:paddingHorizontal="4dp"
-                                android:text="112 LPM"
-                                android:textColor="@color/astra_orange"
-                                android:textSize="8sp" />
-                            <View
-                                android:layout_width="8dp"
-                                android:layout_height="8dp"
-                                android:background="@color/astra_orange"
-                                android:rotation="45" />
-                        </LinearLayout>
-                    </RelativeLayout>
+                            android:text="CONSEJO DEL DÍA"
+                            android:textColor="@color/astra_yellow"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mantente hidratado: Beber al menos 2 litros de agua al día mejora tu rendimiento y recuperación."
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -479,5 +530,16 @@
         app:itemTextColor="@color/nav_item_color_selector"
         app:itemBackground="@drawable/nav_item_background"
         app:menu="@menu/drawer_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/astra_orange"
+        app:tint="@color/white"
+        android:contentDescription="Añadir actividad" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
